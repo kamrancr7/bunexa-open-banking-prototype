@@ -29,7 +29,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        # npm ci rejects this macOS-generated lockfile when Linux-only optional
+        # native packages are absent, so let npm reconcile those platform entries.
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
