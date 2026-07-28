@@ -29,10 +29,15 @@ test("server-renders the Bunexa prototype shell", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Bunexa — Pakistan Open Banking Prototype<\/title>/i);
-  assert.match(html, /One connection to/);
-  assert.match(html, /Pakistan(?:&apos;|&#x27;|')s financial data/);
-  assert.match(html, /Try the account-link demo/);
+  assert.match(
+    html,
+    /<title>Bunexa — Complete Open Banking Platform Prototype<\/title>/i,
+  );
+  assert.match(html, /Platform control plane/);
+  assert.match(html, /operating system for consent-led bank connectivity/i);
+  assert.match(html, /Run complete product flow/);
+  assert.match(html, /Karobar Capital/);
+  assert.match(html, /bank portal/i);
   assert.match(html, /Synthetic data only/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
@@ -47,8 +52,11 @@ test("removes the disposable starter and keeps the product metadata", async () =
 
   assert.match(page, /Bunexa Connect/);
   assert.match(page, /Karobar Capital/);
+  assert.match(page, /Bank Connector Framework/i);
+  assert.match(page, /Operations Console/);
   assert.match(page, /Simulate bank approval/);
-  assert.match(layout, /Pakistan Open Banking Prototype/);
+  assert.match(layout, /Complete Open Banking Platform Prototype/);
+  assert.match(layout, /og\.png/);
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 });

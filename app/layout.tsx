@@ -1,15 +1,36 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://kamrancr7.github.io/bunexa-open-banking-prototype"
+).replace(/\/$/, "");
+
 export const metadata: Metadata = {
-  title: "Bunexa — Pakistan Open Banking Prototype",
+  metadataBase: new URL(`${siteUrl}/`),
+  title: "Bunexa — Complete Open Banking Platform Prototype",
   description:
-    "A consent-led, bank-integrated connectivity prototype for normalized account information in Pakistan.",
+    "Explore the complete Bunexa platform prototype: participant onboarding, consent, bank connectors, normalized APIs, operations and customer control.",
   openGraph: {
-    title: "Bunexa — One connection to Pakistan's financial data",
+    title: "Bunexa — Consent-led bank connectivity",
     description:
-      "Explore the interactive account-linking, customer control and developer sandbox prototype.",
+      "The operating system for consent-led bank connectivity in Pakistan.",
     type: "website",
+    images: [
+      {
+        url: `${siteUrl}/og.png`,
+        width: 1731,
+        height: 909,
+        alt: "Bunexa complete open banking platform prototype",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bunexa — Consent-led bank connectivity",
+    description:
+      "The operating system for consent-led bank connectivity in Pakistan.",
+    images: [`${siteUrl}/og.png`],
   },
 };
 
